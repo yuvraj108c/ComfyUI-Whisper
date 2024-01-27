@@ -1,0 +1,55 @@
+import whisper
+import tempfile
+import os
+import uuid
+
+class ApplyWhisperNode:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": { 
+                "audio" : ("VHS_AUDIO",),
+                "model": (["base","tiny","small","medium","large"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING", "whisper_alignment", "whisper_alignment")
+    RETURN_NAMES = ("text", "segments_alignment", "words_alignment")
+    FUNCTION = "apply_whisper"
+    CATEGORY = "whisper"
+
+    def apply_whisper(self,audio, model):
+
+        # save audio bytes from VHS to file
+        temp_dir = tempfile.gettempdir()
+        audio_save_path = os.path.join(temp_dir,f"{uuid.uuid1()}.wav")
+        with open(audio_save_path, 'wb') as f:
+            f.write(audio())
+
+        # transribe using whisper
+        model = whisper.load_model(model)
+        result = model.transcribe(audio_save_path,word_timestamps=True)
+
+        segments = result['segments']
+        segments_alignment = []
+        words_alignment = []
+
+        for segment in segments:
+            # create segment alignments
+            segment_dict = {
+                'value': segment['text'].strip(),
+                'start': segment['start'],
+                'end': segment['end']
+            }
+            segments_alignment.append(segment_dict)
+
+            # create word alignments
+            for word in segment["words"]:
+                word_dict = {
+                    'value': word["word"].strip(),
+                    'start': word["start"],
+                    'end': word['end']
+                }
+                words_alignment.append(word_dict)
+
+        return (result["text"].strip(), segments_alignment, words_alignment)
