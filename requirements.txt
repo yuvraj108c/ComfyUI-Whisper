@@ -1,0 +1,5 @@
+openai-whisper
+pillow
+torch
+numpy
+uuid
