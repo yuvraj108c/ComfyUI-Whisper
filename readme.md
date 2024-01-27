@@ -17,7 +17,7 @@ Transcribe audio and get timestamps for each segment and word.
 
 ### Add Subtitles To Frames
 
-Add subtitles on the video frames.
+Add subtitles on the video frames. You can specify font family, font color and x/y positions.
 
 ### Add Subtitles To Background (Experimental)
 
