@@ -6,13 +6,11 @@ Transcribe audio and add subtitles to videos using [Whisper](https://github.com/
 
 ## Installation
 
-1. Clone this repo into `custom_nodes` folder
-2. Install dependencies: `pip install -r requirements.txt`
-3. Install [ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
+Install via [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
 
 ## Usage
 
-Load this [workflow](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/master/example_workflows/whisper_video_subtitles_workflow.json) into ComfyUI
+Load this [workflow](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/master/example_workflows/whisper_video_subtitles_workflow.json) into ComfyUI & install missing custom nodes
 
 ## Nodes
 
