@@ -18,20 +18,22 @@ class AddSubtitlesToFramesNode:
                 }),
                 "font_family": (os.listdir(FONT_DIR),),
                 "font_size": ("INT",{
-                    "default": 50,
+                    "default": 100,
                     "step":5,
                     "display": "number"
                 }),
                 "x_position": ("INT",{
-                    "default": 500,
+                    "default": 100,
                     "step":50,
                     "display": "number"
                 }),
                 "y_position": ("INT",{
-                    "default": 500,
+                    "default": 100,
                     "step":50,
                     "display": "number"
                 }),
+                "center_x": ("BOOLEAN", {"default": True}),
+                "center_y": ("BOOLEAN", {"default": True}),
                 "video_fps": ("INT",{
                     "default": 24,
                     "step":1,
@@ -46,7 +48,7 @@ class AddSubtitlesToFramesNode:
     CATEGORY = "whisper"
 
 
-    def add_subtitles_to_frames(self, images, alignment, font_family, font_size, font_color, x_position, y_position, video_fps):
+    def add_subtitles_to_frames(self, images, alignment, font_family, font_size, font_color, x_position, y_position, center_x, center_y, video_fps):
         pil_images = tensor2pil(images)
 
         pil_images_with_text = []
@@ -84,8 +86,19 @@ class AddSubtitlesToFramesNode:
                 img = pil_images[i].convert("RGB")
                 width, height = img.size
 
-                # add text to video frames
                 d = ImageDraw.Draw(img)
+
+                # center text
+                text_bbox = d.textbbox((x_position, y_position), alignment_obj["value"], font=font)
+                if center_x:
+                    text_width = text_bbox[2] - text_bbox[0]
+                    x_position = (width - text_width)/2
+                if center_y:
+                    text_height = text_bbox[3] - text_bbox[1]
+                    y_position = (height - text_height)/2
+
+
+                # add text to video frames
                 d.text((x_position, y_position), alignment_obj["value"], fill=font_color,font=font)
                 pil_images_with_text.append(img)
 
