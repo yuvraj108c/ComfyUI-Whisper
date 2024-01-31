@@ -70,7 +70,7 @@ class AddSubtitlesToBackgroundNode:
         for i in range(len(alignment)):
             alignment_obj = alignment[i]
             start_frame_no = math.floor(alignment_obj["start"] * video_fps)
-            end_frame_no = math.floor(alignment_obj["end"] * video_fps)
+            end_frame_no = math.round(alignment_obj["end"] * video_fps)
 
             word = alignment_obj["value"]
 
