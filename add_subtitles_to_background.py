@@ -30,6 +30,16 @@ class AddSubtitlesToBackgroundNode:
                     "step":1,
                     "display": "number"
                 }),
+                "min_font_size": ("INT",{
+                    "default": 15,
+                    "step":1,
+                    "display": "number"
+                }),
+                "max_font_size": ("INT",{
+                    "default": 75,
+                    "step":1,
+                    "display": "number"
+                }),
                 "video_fps": ("INT",{
                     "default": 24,
                     "step":1,
@@ -44,7 +54,7 @@ class AddSubtitlesToBackgroundNode:
     CATEGORY = "whisper"
 
 
-    def add_subtitles_to_background(self, images, alignment, font_family, text_displacement, font_size_displacement,num_words, video_fps):
+    def add_subtitles_to_background(self, images, alignment, font_family, text_displacement, font_size_displacement,num_words, min_font_size, max_font_size, video_fps):
         pil_images = tensor2pil(images)
 
         frame_width, frame_height = pil_images[0].size
@@ -52,8 +62,6 @@ class AddSubtitlesToBackgroundNode:
 
         background_color = (0, 0, 0)
         text_color = (255,255,255)
-        min_font_size = 15
-        max_font_size = 75
 
         # Randomly scatter the initial (x, y) positions and font sizes within the image size
         positions = [(random.randint(0, frame_width - 100), random.randint(0, frame_height - 30)) for _ in range(num_words)]
