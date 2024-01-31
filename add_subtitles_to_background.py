@@ -70,7 +70,7 @@ class AddSubtitlesToBackgroundNode:
         for i in range(len(alignment)):
             alignment_obj = alignment[i]
             start_frame_no = math.floor(alignment_obj["start"] * video_fps)
-            end_frame_no = math.floor(alignment_obj["end"] * video_fps)
+            end_frame_no = math.round(alignment_obj["end"] * video_fps)
 
             word = alignment_obj["value"]
 
@@ -80,7 +80,7 @@ class AddSubtitlesToBackgroundNode:
                 final_pil_images.append(bg_image)
             
 
-            for i in range(start_frame_no,end_frame_no+1):
+            for i in range(start_frame_no,end_frame_no):
             
                 # Create a blank frame with background color
                 bg_image = Image.new("RGB", (frame_width, frame_height), background_color)
