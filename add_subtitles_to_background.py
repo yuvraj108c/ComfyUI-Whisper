@@ -67,20 +67,20 @@ class AddSubtitlesToBackgroundNode:
             final_pil_images.extend([bg_image]*len(pil_images))
         
         last_frame_no = 0
-        for i in range(len(alignment)):
-            alignment_obj = alignment[i]
+        for x in range(len(alignment)):
+            alignment_obj = alignment[x]
             start_frame_no = math.floor(alignment_obj["start"] * video_fps)
-            end_frame_no = round(alignment_obj["end"] * video_fps)
+            end_frame_no = math.floor(alignment_obj["end"] * video_fps)
 
             word = alignment_obj["value"]
 
             # create images with no texts
-            for i in range(last_frame_no, start_frame_no):
+            for _ in range(last_frame_no, start_frame_no):
                 bg_image = Image.new("RGB", (frame_width, frame_height), background_color)
                 final_pil_images.append(bg_image)
             
 
-            for i in range(start_frame_no,end_frame_no):
+            for _ in range(start_frame_no,end_frame_no):
             
                 # Create a blank frame with background color
                 bg_image = Image.new("RGB", (frame_width, frame_height), background_color)
@@ -159,7 +159,12 @@ class AddSubtitlesToBackgroundNode:
             
             last_frame_no = end_frame_no
 
-   
+        # create missing black images at the end
+        missing_frames_count = len(pil_images) - len(final_pil_images)
+        for _ in range(missing_frames_count):
+            bg_image = Image.new("RGB", (frame_width, frame_height), background_color)
+            final_pil_images.append(bg_image)
+
         tensor_images = pil2tensor(final_pil_images)
 
         return (tensor_images,)
