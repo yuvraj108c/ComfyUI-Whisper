@@ -80,7 +80,7 @@ class AddSubtitlesToBackgroundNode:
                 final_pil_images.append(bg_image)
             
 
-            for i in range(start_frame_no,end_frame_no):
+            for i in range(start_frame_no,end_frame_no+1):
             
                 # Create a blank frame with background color
                 bg_image = Image.new("RGB", (frame_width, frame_height), background_color)
