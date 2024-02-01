@@ -42,8 +42,8 @@ class AddSubtitlesToFramesNode:
             }
         }
 
-    RETURN_TYPES = ("IMAGE", "MASK",)
-    RETURN_NAMES = ("IMAGE","MASK",)
+    RETURN_TYPES = ("IMAGE", "MASK", "IMAGE", "subtitle_coord", )
+    RETURN_NAMES = ("IMAGE","MASK", "cropped_subtitles","subtitle_coord",)
     FUNCTION = "add_subtitles_to_frames"
     CATEGORY = "whisper"
 
@@ -52,12 +52,16 @@ class AddSubtitlesToFramesNode:
         pil_images = tensor2pil(images)
 
         pil_images_with_text = []
+        cropped_pil_images_with_text = []
         pil_images_masks = []
+        subtitle_coord = []
 
         font = ImageFont.truetype(os.path.join(FONT_DIR,font_family), font_size)
 
         if len(alignment) == 0:
             pil_images_with_text = pil_images
+            cropped_pil_images_with_text = pil_images
+            subtitle_coord.extend([(0,0,0,0)]*len(pil_images))
 
             # create mask
             width, height = pil_images[0].size
@@ -77,9 +81,12 @@ class AddSubtitlesToFramesNode:
                 width, height = img.size
                 pil_images_with_text.append(img)
 
-                # create mask
+                # create mask + cropped image
                 black_img = Image.new('RGB', (width, height), 'black')
-                pil_images_masks.append(black_img)  
+                pil_images_masks.append(black_img)
+                black_img = Image.new('RGB', (1, 1), 'black') # to prevent max() from considering these images, use very small size
+                cropped_pil_images_with_text.append(black_img)  
+                subtitle_coord.append((0,0,0,0))
 
 
             for i in range(start_frame_no,end_frame_no):
@@ -107,11 +114,41 @@ class AddSubtitlesToFramesNode:
                 d = ImageDraw.Draw(black_img)
                 d.text((x_position, y_position), alignment_obj["value"], fill="white",font=font)    
                 pil_images_masks.append(black_img)    
+
+                # crop subtitles to black frame
+                text_bbox = d.textbbox((x_position,y_position), alignment_obj["value"], font=font)
+                cropped_text_frame = black_img.crop(text_bbox)
+                cropped_pil_images_with_text.append(cropped_text_frame)
+                subtitle_coord.append(text_bbox)
+
             
             last_frame_no = end_frame_no
 
+        # add missing frames with no text at end
+        for i in range(len(pil_images_with_text),len(pil_images)):
+            pil_images_with_text.append(pil_images[i])
+            width,height = pil_images[i].size
+
+            # create mask + cropped image
+            black_img = Image.new('RGB', (width, height), 'black')
+            pil_images_masks.append(black_img)
+            black_img = Image.new('RGB', (1, 1), 'black') # to prevent max() from considering these images, use very small size
+            cropped_pil_images_with_text.append(black_img)  
+            subtitle_coord.append((0,0,0,0))
+
+        # make cropped images same size
+        cropped_pil_images_with_text_normalised = []
+        max_width = max(img.width for img in cropped_pil_images_with_text)
+        max_height = max(img.height for img in cropped_pil_images_with_text)
+
+        for img in cropped_pil_images_with_text:
+            blank_frame = Image.new("RGB", (max_width, max_height), "black")
+            blank_frame.paste(img, (0,0))
+            cropped_pil_images_with_text_normalised.append(blank_frame)
+
 
         tensor_images = pil2tensor(pil_images_with_text)
+        cropped_pil_images_with_text_normalised = pil2tensor(cropped_pil_images_with_text_normalised)
         tensor_masks = tensor2Mask(pil2tensor(pil_images_masks))
 
-        return (tensor_images,tensor_masks,)
+        return (tensor_images,tensor_masks,cropped_pil_images_with_text_normalised,subtitle_coord,)
