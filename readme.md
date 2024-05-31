@@ -1,5 +1,11 @@
 # ComfyUI Whisper
+This project is licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/), everyone is FREE to access, use, modify and redistribute with the same license.  
 
+For commercial purposes, please contact me directly at yuvraj108c@gmail.com
+
+If you like the project, please give me a star! ⭐
+
+****
 Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 
 ![demo-image](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/assets/recording.gif?raw=true)
@@ -29,6 +35,9 @@ Add subtitles like wordcloud on blank frames
 ## Credits
 
 - [comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+
+## License
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 - [Kosinkadink/ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
