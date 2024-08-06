@@ -1,15 +1,17 @@
 import whisper
-import tempfile
 import os
+import folder_paths
 import uuid
+import torchaudio
+
 
 class ApplyWhisperNode:
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": { 
-                "audio" : ("VHS_AUDIO",),
-                "model": (["base","tiny","small","medium","large"],),
+            "required": {
+                "audio": ("AUDIO",),
+                "model": (["base", "tiny", "small", "medium", "large"],),
             }
         }
 
@@ -18,17 +20,18 @@ class ApplyWhisperNode:
     FUNCTION = "apply_whisper"
     CATEGORY = "whisper"
 
-    def apply_whisper(self,audio, model):
+    def apply_whisper(self, audio, model):
 
         # save audio bytes from VHS to file
-        temp_dir = tempfile.gettempdir()
-        audio_save_path = os.path.join(temp_dir,f"{uuid.uuid1()}.wav")
-        with open(audio_save_path, 'wb') as f:
-            f.write(audio())
+        temp_dir = folder_paths.get_temp_directory()
+        os.makedirs(temp_dir, exist_ok=True)
+        audio_save_path = os.path.join(temp_dir, f"{uuid.uuid1()}.wav")
+        torchaudio.save(audio_save_path, audio['waveform'].squeeze(
+            0), audio["sample_rate"])
 
         # transribe using whisper
         model = whisper.load_model(model)
-        result = model.transcribe(audio_save_path,word_timestamps=True)
+        result = model.transcribe(audio_save_path, word_timestamps=True)
 
         segments = result['segments']
         segments_alignment = []
