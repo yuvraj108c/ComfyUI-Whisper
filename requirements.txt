@@ -1,3 +1,4 @@
 openai-whisper
 pillow
 uuid
+translators
