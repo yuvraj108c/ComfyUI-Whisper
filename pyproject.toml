@@ -9,6 +9,6 @@ Repository = "https://github.com/civen-cn/ComfyUI-Whisper-Translator"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = "civen-cn"
+PublisherId = "comfyui-whisper-translator"
 DisplayName = "ComfyUI-Whisper-Translator"
 Icon = ""
