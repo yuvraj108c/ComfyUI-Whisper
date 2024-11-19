@@ -16,7 +16,7 @@ ComfyUI
 Install via [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
 
 ## Usage
-
+[workflow](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example_workflows/video_translation_subtitles_workflow.json)
 ## Nodes
 
 ### Apply Whisper X
