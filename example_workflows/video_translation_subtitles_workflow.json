@@ -3,170 +3,14 @@
   "last_link_id": 37,
   "nodes": [
     {
-      "id": 16,
-      "type": "Apply WhisperX",
-      "pos": {
-        "0": 329,
-        "1": -292
-      },
-      "size": {
-        "0": 317.4000244140625,
-        "1": 190
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "link": 31,
-          "label": "audio"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "links": null,
-          "slot_index": 0,
-          "label": "text"
-        },
-        {
-          "name": "segments_alignment",
-          "type": "whisper_alignment",
-          "links": [
-            37
-          ],
-          "slot_index": 1,
-          "label": "segments_alignment"
-        },
-        {
-          "name": "words_alignment",
-          "type": "whisper_alignment",
-          "links": [],
-          "slot_index": 2,
-          "label": "words_alignment"
-        },
-        {
-          "name": "translate_alignment",
-          "type": "whisper_alignment",
-          "links": [
-            30
-          ],
-          "slot_index": 3,
-          "label": "translate_alignment"
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Apply WhisperX"
-      },
-      "widgets_values": [
-        "large",
-        true,
-        "bing",
-        "en"
-      ]
-    },
-    {
-      "id": 18,
-      "type": "VHS_LoadVideo",
-      "pos": {
-        "0": -200,
-        "1": 237
-      },
-      "size": {
-        "0": 210,
-        "1": 262
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "meta_batch",
-          "type": "VHS_BatchManager",
-          "link": 32,
-          "shape": 7,
-          "label": "批次管理"
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": null,
-          "shape": 7
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            29
-          ],
-          "label": "图像"
-        },
-        {
-          "name": "frame_count",
-          "type": "INT",
-          "links": null,
-          "label": "帧计数"
-        },
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "links": [
-            24
-          ],
-          "label": "音频"
-        },
-        {
-          "name": "video_info",
-          "type": "VHS_VIDEOINFO",
-          "links": [
-            17
-          ],
-          "label": "视频信息"
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VHS_LoadVideo"
-      },
-      "widgets_values": {
-        "video": "mm.mp4",
-        "force_rate": 0,
-        "force_size": "Disabled",
-        "custom_width": 512,
-        "custom_height": 512,
-        "frame_load_cap": 0,
-        "skip_first_frames": 0,
-        "select_every_nth": 1,
-        "choose video to upload": "image",
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "mm.mp4",
-            "type": "input",
-            "format": "video/mp4",
-            "force_rate": 0,
-            "frame_load_cap": 0,
-            "skip_first_frames": 0,
-            "select_every_nth": 1
-          },
-          "muted": true
-        }
-      }
-    },
-    {
       "id": 35,
       "type": "VHS_VideoInfoLoaded",
-      "pos": {
-        "0": 74,
-        "1": 308
-      },
+      "pos": [
+        74,
+        308
+      ],
       "size": {
-        "0": 167.32421875,
+        "0": 235.1999969482422,
         "1": 106
       },
       "flags": {},
@@ -223,10 +67,10 @@
     {
       "id": 36,
       "type": "MathExpression|pysssss",
-      "pos": {
-        "0": 375,
-        "1": 434
-      },
+      "pos": [
+        375,
+        434
+      ],
       "size": {
         "0": 400,
         "1": 200
@@ -234,7 +78,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -275,19 +119,20 @@
           "label": "浮点"
         }
       ],
-      "properties": {},
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss"
+      },
       "widgets_values": [
-        "a/25\n",
-        true
+        "a/25\n"
       ]
     },
     {
       "id": 37,
       "type": "MathExpression|pysssss",
-      "pos": {
-        "0": 373,
-        "1": 511
-      },
+      "pos": [
+        373,
+        511
+      ],
       "size": {
         "0": 400,
         "1": 200
@@ -295,7 +140,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -336,19 +181,20 @@
           "label": "浮点"
         }
       ],
-      "properties": {},
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss"
+      },
       "widgets_values": [
-        "0",
-        true
+        "0"
       ]
     },
     {
       "id": 38,
       "type": "MathExpression|pysssss",
-      "pos": {
-        "0": 371,
-        "1": 574
-      },
+      "pos": [
+        371,
+        574
+      ],
       "size": {
         "0": 400,
         "1": 200
@@ -356,7 +202,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -397,19 +243,20 @@
           "label": "浮点"
         }
       ],
-      "properties": {},
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss"
+      },
       "widgets_values": [
-        "a*0.85",
-        true
+        "a*0.85"
       ]
     },
     {
       "id": 40,
       "type": "MathExpression|pysssss",
-      "pos": {
-        "0": 379,
-        "1": 361
-      },
+      "pos": [
+        379,
+        361
+      ],
       "size": {
         "0": 400,
         "1": 200
@@ -417,7 +264,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
@@ -458,25 +305,62 @@
           "label": "浮点"
         }
       ],
-      "properties": {},
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss"
+      },
       "widgets_values": [
-        "a\n",
-        true
+        "a\n"
       ]
+    },
+    {
+      "id": 47,
+      "type": "VHS_BatchManager",
+      "pos": [
+        -204,
+        114
+      ],
+      "size": {
+        "0": 226.8000030517578,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "links": [
+            32,
+            33,
+            34
+          ],
+          "slot_index": 0,
+          "label": "批次管理"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_BatchManager"
+      },
+      "widgets_values": {
+        "frames_per_batch": 128,
+        "count": 56
+      }
     },
     {
       "id": 41,
       "type": "VHS_VideoCombine",
-      "pos": {
-        "0": 1572,
-        "1": -295
-      },
+      "pos": [
+        1245,
+        -294
+      ],
       "size": [
-        210,
-        426.5420560747664
+        214.8000030517578,
+        306
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -553,16 +437,16 @@
     {
       "id": 45,
       "type": "Add Subtitles To FramesX",
-      "pos": {
-        "0": 1183,
-        "1": -290
-      },
+      "pos": [
+        855,
+        -296
+      ],
       "size": {
         "0": 355.20001220703125,
         "1": 358
       },
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -654,7 +538,7 @@
       },
       "widgets_values": [
         "brown",
-        "msyhbd.ttc",
+        "Chanakya Regular.ttf",
         100,
         true,
         "white",
@@ -667,16 +551,80 @@
       ]
     },
     {
+      "id": 16,
+      "type": "Apply WhisperX",
+      "pos": [
+        329,
+        -292
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 190
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 31,
+          "label": "audio"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0,
+          "label": "text"
+        },
+        {
+          "name": "segments_alignment",
+          "type": "whisper_alignment",
+          "links": [],
+          "slot_index": 1,
+          "label": "segments_alignment"
+        },
+        {
+          "name": "words_alignment",
+          "type": "whisper_alignment",
+          "links": [],
+          "slot_index": 2,
+          "label": "words_alignment"
+        },
+        {
+          "name": "translate_alignment",
+          "type": "whisper_alignment",
+          "links": [
+            30
+          ],
+          "slot_index": 3,
+          "label": "translate_alignment"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Apply WhisperX"
+      },
+      "widgets_values": [
+        "base",
+        true,
+        "bing",
+        "en"
+      ]
+    },
+    {
       "id": 46,
       "type": "VHS_LoadVideo",
-      "pos": {
-        "0": -200,
-        "1": -326
-      },
-      "size": {
-        "0": 210,
-        "1": 262
-      },
+      "pos": [
+        -200,
+        -326
+      ],
+      "size": [
+        235.1999969482422,
+        396.95550179760687
+      ],
       "flags": {},
       "order": 1,
       "mode": 0,
@@ -728,8 +676,8 @@
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
-        "video": "mm.mp4",
-        "force_rate": 0,
+        "video": "幼儿舞蹈《吉祥娃娃》给你送喜送福来喽，愿大家越来越旺.mp4",
+        "force_rate": 5,
         "force_size": "Disabled",
         "custom_width": 512,
         "custom_height": 512,
@@ -741,10 +689,10 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "mm.mp4",
+            "filename": "幼儿舞蹈《吉祥娃娃》给你送喜送福来喽，愿大家越来越旺.mp4",
             "type": "input",
             "format": "video/mp4",
-            "force_rate": 0,
+            "force_rate": 5,
             "frame_load_cap": 0,
             "skip_first_frames": 0,
             "select_every_nth": 1
@@ -754,77 +702,94 @@
       }
     },
     {
-      "id": 47,
-      "type": "VHS_BatchManager",
-      "pos": {
-        "0": -204,
-        "1": 114
-      },
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "meta_batch",
-          "type": "VHS_BatchManager",
-          "links": [
-            32,
-            33,
-            34
-          ],
-          "slot_index": 0,
-          "label": "批次管理"
-        }
+      "id": 18,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        -200,
+        237
       ],
-      "properties": {
-        "Node name for S&R": "VHS_BatchManager"
-      },
-      "widgets_values": {
-        "frames_per_batch": 128,
-        "count": 52
-      }
-    },
-    {
-      "id": 49,
-      "type": "easy showAnything",
-      "pos": {
-        "0": 792.4086303710938,
-        "1": -290.1723937988281
-      },
-      "size": {
-        "0": 359.34539794921875,
-        "1": 573.0372924804688
-      },
+      "size": [
+        235.1999969482422,
+        396.95550179760687
+      ],
       "flags": {},
-      "order": 5,
+      "order": 2,
       "mode": 0,
       "inputs": [
         {
-          "name": "anything",
-          "type": "*",
-          "link": 37,
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": 32,
           "shape": 7,
-          "label": "输入任何"
+          "label": "批次管理"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
         }
       ],
       "outputs": [
         {
-          "name": "output",
-          "type": "*",
-          "links": null
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            29
+          ],
+          "label": "图像"
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null,
+          "label": "帧计数"
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            24
+          ],
+          "label": "音频"
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            17
+          ],
+          "label": "视频信息"
         }
       ],
       "properties": {
-        "Node name for S&R": "easy showAnything"
+        "Node name for S&R": "VHS_LoadVideo"
       },
-      "widgets_values": [
-        "[{\"value\": \"\\u5c0f\\u9e2d\\u5b50\", \"start\": 0.0, \"end\": 29.96}, {\"value\": \"\\u5c0f\\u9e2d\\u5b50 \\u560e\\u560e\\u560e\\u560e\\u8df3\", \"start\": 30.0, \"end\": 32.16}, {\"value\": \"\\u770b\\u89c1\\u6c60\\u5858\\u6c34\\u6e05\\u6e05\", \"start\": 32.16, \"end\": 34.86}, {\"value\": \"\\u513f\\u7ae5\\u60f3\\u5f80\\u4e0b\\u8df3\", \"start\": 34.86, \"end\": 36.58}, {\"value\": \"\\u5c0f\\u9ec4\\u9e2d \\u5c0f\\u9ed1\\u9e2d\", \"start\": 36.58, \"end\": 39.26}, {\"value\": \"\\u4e50\\u5f97\\u54aa\\u54aa\\u7b11\", \"start\": 39.26, \"end\": 40.96}, {\"value\": \"\\u5c0f\\u767d\\u9e2d \\u5c0f\\u7070\\u9e2d\", \"start\": 40.96, \"end\": 43.78}, {\"value\": \"\\u671d\\u7740\\u6e38\\u620f\\u8d70\", \"start\": 43.78, \"end\": 45.36}, {\"value\": \"\\u560e\\u560e\\u560e \\u4e0d\\u8981\\u95f9\", \"start\": 45.36, \"end\": 48.12}, {\"value\": \"\\u560e\\u560e\\u560e \\u51c6\\u5907\\u597d\", \"start\": 48.12, \"end\": 50.26}, {\"value\": \"\\u6251\\u901a\\u6251\\u901a\\u5f80\\u4e0b\\u8df3\", \"start\": 50.26, \"end\": 52.98}, {\"value\": \"\\u560e\\u560e\\u560e\", \"start\": 52.98, \"end\": 54.1}, {\"value\": \"\\u6765\\u4e86\\u4e00\\u7fa4\\u5c0f\\u9e2d\\u5b50\", \"start\": 63.4, \"end\": 65.74}, {\"value\": \"\\u560e\\u560e\\u560e\\u560e\\u8df3\", \"start\": 65.74, \"end\": 67.38}, {\"value\": \"\\u770b\\u89c1\\u6c60\\u5858\\u6c34\\u6e05\\u6e05\", \"start\": 67.38, \"end\": 70.08}, {\"value\": \"\\u513f\\u7ae5\\u60f3\\u5f80\\u4e0b\\u8df3\", \"start\": 70.08, \"end\": 71.82}, {\"value\": \"\\u5c0f\\u9ec4\\u9e2d \\u5c0f\\u9ed1\\u9e2d\", \"start\": 71.82, \"end\": 74.56}, {\"value\": \"\\u4e50\\u5f97\\u54aa\\u54aa\\u7b11\", \"start\": 74.56, \"end\": 76.2}, {\"value\": \"\\u5c0f\\u767d\\u9e2d \\u5c0f\\u7070\\u9e2d\", \"start\": 76.2, \"end\": 79.0}, {\"value\": \"\\u671d\\u7740\\u6e38\\u620f\\u8d70\", \"start\": 79.0, \"end\": 80.6}, {\"value\": \"\\u560e\\u560e\\u560e \\u4e0d\\u8981\\u95f9\", \"start\": 80.6, \"end\": 83.34}, {\"value\": \"\\u560e\\u560e\\u560e \\u51c6\\u5907\\u597d\", \"start\": 83.34, \"end\": 85.5}, {\"value\": \"\\u6251\\u901a\\u6251\\u901a\\u5f80\\u4e0b\\u8df3\", \"start\": 85.5, \"end\": 88.22}, {\"value\": \"\\u560e\\u560e\\u560e\", \"start\": 88.22, \"end\": 89.34}, {\"value\": \"\\u560e\\u560e\\u560e \\u51c6\\u5907\\u597d\", \"start\": 89.34, \"end\": 89.98}, {\"value\": \"\\u5c0f\\u767d\\u9e2d \\u5c0f\\u7070\\u9e2d\", \"start\": 89.98, \"end\": 90.94}]"
-      ]
+      "widgets_values": {
+        "video": "幼儿舞蹈《吉祥娃娃》给你送喜送福来喽，愿大家越来越旺.mp4",
+        "force_rate": 5,
+        "force_size": "Disabled",
+        "custom_width": 512,
+        "custom_height": 512,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "幼儿舞蹈《吉祥娃娃》给你送喜送福来喽，愿大家越来越旺.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "force_rate": 5,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1
+          },
+          "muted": true
+        }
+      }
     }
   ],
   "links": [
@@ -971,24 +936,16 @@
       45,
       2,
       "VHS_BatchManager"
-    ],
-    [
-      37,
-      16,
-      1,
-      49,
-      0,
-      "*"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6115909044841845,
+      "scale": 0.2853116706110186,
       "offset": [
-        438.7926770819121,
-        583.74806666442
+        1515.6929667908846,
+        1466.9685806252212
       ]
     },
     "groupNodes": {},
