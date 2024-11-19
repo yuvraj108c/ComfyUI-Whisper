@@ -2,6 +2,15 @@
 
 If you like the project, please give me a star! ⭐
 
+## Description
+This is a ComfyUI node that allows you to translate subtitles using the Whisper.
+
+Now support for multiple languages:
+
+["zh", "en", "ja", "ko", "ru", "fr", "de", "es", "pt", "it", "ar"]
+
+You may need to put fonts in the "fonts" folder to support different languages.
+
 ****
 Thanks for using :
 
@@ -10,6 +19,13 @@ ComfyUI
 [ComfyUI-Whisper](https://github.com/yuvraj108c/ComfyUI-Whisper)
 
 [ComfyUI-WhisperX](https://github.com/AIFSH/ComfyUI-WhisperX)
+
+## Example
+![en-image](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example/en.png?raw=true)
+![zh-image](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example/zh.png?raw=true)
+![ru-image](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example/ru.png?raw=true)
+![es-image](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example/es.png?raw=true)
+![ja-image](https://github.com/civen-cn/ComfyUI-Whisper-Translator/blob/master/example/jp.png?raw=true)
 
 ## Installation
 
