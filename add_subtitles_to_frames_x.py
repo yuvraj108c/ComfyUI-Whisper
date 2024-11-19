@@ -74,7 +74,7 @@ class AddSubtitlesToFramesNodeX:
 
         pil_images = tensor2pil(images)
         pil_images_with_text = []
-        font = ImageFont.truetype(os.path.join(FONT_DIR, font_family), font_size)
+        set_font = ImageFont.truetype(os.path.join(FONT_DIR, font_family), font_size)
 
         if len(alignment) == 0:
             pil_images_with_text = pil_images
@@ -101,10 +101,15 @@ class AddSubtitlesToFramesNodeX:
                             break
 
                 if alignment_obj is not None:
+                    font = set_font
                     img = pil_images[i].convert("RGB")
                     width, height = img.size
                     d = ImageDraw.Draw(img)
-                    # center text
+
+                    if set_font.getlength(alignment_obj["value"]) > width:
+                        new_font_size = int(width / set_font.getlength(alignment_obj["value"]) * font_size)
+                        font = ImageFont.truetype(os.path.join(FONT_DIR, font_family), new_font_size)
+
                     text_bbox = d.textbbox((x_position, y_position), alignment_obj["value"], font=font)
                     if center_x:
                         text_width = text_bbox[2] - text_bbox[0]
