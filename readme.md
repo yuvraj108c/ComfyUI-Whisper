@@ -1,17 +1,15 @@
-# ComfyUI Whisper
-
-This project is licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/), everyone is FREE to access, use, modify and redistribute with the same license.  
-
-For commercial purposes, please contact me directly at yuvraj108c@gmail.com
+# ComfyUI Whisper Translator
 
 If you like the project, please give me a star! ⭐
 
 ****
+Thanks for using :
 
+ComfyUI 
 
-Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+[ComfyUI-Whisper](https://github.com/yuvraj108c/ComfyUI-Whisper)
 
-![demo-image](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/assets/recording.gif?raw=true)
+[ComfyUI-WhisperX](https://github.com/AIFSH/ComfyUI-WhisperX)
 
 ## Installation
 
@@ -19,31 +17,26 @@ Install via [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
 
 ## Usage
 
-Load this [workflow](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/master/example_workflows/whisper_video_subtitles_workflow.json) into ComfyUI & install missing custom nodes
-
 ## Nodes
 
-### Apply Whisper
+### Apply Whisper X
 
-Transcribe audio and get timestamps for each segment and word.
+Transcribe audio and get timestamps for each segment(Translation) and word.
 
-### Add Subtitles To Frames
+### Add Subtitles To Frames X
 
-Add subtitles on the video frames. You can specify font family, font color and x/y positions.
-
-### Add Subtitles To Background (Experimental)
-
-Add subtitles like wordcloud on blank frames
+Add subtitles on the video frames. You can specify font family, font color(background color) and x/y positions.
 
 ## Credits
-
 - [comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 
 - [Kosinkadink/ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
 - [melMass/comfy_mtb](https://github.com/melMass/comfy_mtb)
 
-## License
+- [ComfyUI-Whisper](https://github.com/yuvraj108c/ComfyUI-Whisper)
 
-[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [ComfyUI-WhisperX](https://github.com/AIFSH/ComfyUI-WhisperX)
+
+
 

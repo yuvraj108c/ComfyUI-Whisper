@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-whisper-translator"
+description = "Nodes related to [Whisper](https://github.com/openai/whisper)."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/civen-cn/ComfyUI-Whisper-Translator"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "civen-cn"
+DisplayName = "ComfyUI-Whisper-Translator"
+Icon = ""
