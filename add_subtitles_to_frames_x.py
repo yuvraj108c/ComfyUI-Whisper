@@ -106,6 +106,8 @@ class AddSubtitlesToFramesNodeX:
                     width, height = img.size
                     d = ImageDraw.Draw(img)
 
+                    if type(alignment_obj["value"]) == bytes:
+                        alignment_obj["value"] = alignment_obj["value"].decode("utf-8")
                     if set_font.getlength(alignment_obj["value"]) > width:
                         new_font_size = int(width / set_font.getlength(alignment_obj["value"]) * font_size)
                         font = ImageFont.truetype(os.path.join(FONT_DIR, font_family), new_font_size)
