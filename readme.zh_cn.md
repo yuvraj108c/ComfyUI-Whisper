@@ -5,6 +5,8 @@
 </div>
 请多多star⭐
 
+合作请联系：civen_cn@163.com
+
 ## 描述
 这是一个 ComfyUI 节点，允许您使用 Whisper 翻译字幕。
 
