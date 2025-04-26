@@ -2,7 +2,7 @@
 name = "comfyui-whisper"
 description = "Transcribe audio and add subtitles to videos using Whisper in ComfyUI"
 version = "1.0.0"
-license = "LICENSE"
+license = {file = "LICENSE"}
 dependencies = ["openai-whisper", "pillow", "uuid"]
 
 [project.urls]
@@ -10,6 +10,6 @@ Repository = "https://github.com/yuvraj108c/ComfyUI-Whisper"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "yuvraj108c"
 DisplayName = "ComfyUI-Whisper"
 Icon = ""
