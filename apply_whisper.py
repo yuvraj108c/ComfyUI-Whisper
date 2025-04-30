@@ -6,12 +6,20 @@ import torchaudio
 
 
 class ApplyWhisperNode:
+    languages_by_name = None
+
     @classmethod
     def INPUT_TYPES(s):
         return {
             "required": {
                 "audio": ("AUDIO",),
                 "model": (["base", "tiny", "small", "medium", "large"],),
+            },
+            "optional": {
+                "language": (
+                    ["auto"] +
+                    [s.capitalize() for s in sorted(list(whisper.tokenizer.LANGUAGES.values())) ],
+                ),
             }
         }
 
@@ -20,7 +28,7 @@ class ApplyWhisperNode:
     FUNCTION = "apply_whisper"
     CATEGORY = "whisper"
 
-    def apply_whisper(self, audio, model):
+    def apply_whisper(self, audio, model, language):
 
         # save audio bytes from VHS to file
         temp_dir = folder_paths.get_temp_directory()
@@ -31,7 +39,12 @@ class ApplyWhisperNode:
 
         # transribe using whisper
         model = whisper.load_model(model)
-        result = model.transcribe(audio_save_path, word_timestamps=True)
+        transcribe_args = {}
+        if language != "auto":
+            if ApplyWhisperNode.languages_by_name is None:
+                ApplyWhisperNode.languages_by_name = {v.lower(): k for k, v in whisper.tokenizer.LANGUAGES.items()}
+            transcribe_args['language'] = ApplyWhisperNode.languages_by_name[language.lower()]
+        result = model.transcribe(audio_save_path, word_timestamps=True, **transcribe_args)
 
         segments = result['segments']
         segments_alignment = []
