@@ -40,8 +40,8 @@ class AddSubtitlesToBackgroundNode:
                     "step":1,
                     "display": "number"
                 }),
-                "video_fps": ("INT",{
-                    "default": 24,
+                "video_fps": ("FLOAT",{
+                    "default": 24.0,
                     "step":1,
                     "display": "number"
                 }),
