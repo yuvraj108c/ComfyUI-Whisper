@@ -44,6 +44,10 @@ Add subtitles on the video frames. You can specify font family, font color and x
 
 Add subtitles like wordcloud on blank frames
 
+## Updates
+### 2 May 2025
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/15 by [@niknah](https://github.com/niknah) for language selection
+
 ## Credits
 
 - [comfyanonymous/ComfyUI](https://github.com/comfyanonymous/ComfyUI)
