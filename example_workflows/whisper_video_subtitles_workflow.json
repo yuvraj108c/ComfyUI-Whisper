@@ -1,8 +1,8 @@
 {
   "id": "13ec9b05-13e3-4ce0-a274-dfe796b6c75d",
   "revision": 0,
-  "last_node_id": 89,
-  "last_link_id": 203,
+  "last_node_id": 90,
+  "last_link_id": 205,
   "nodes": [
     {
       "id": 49,
@@ -13,7 +13,7 @@
       ],
       "size": [
         219.3603515625,
-        334
+        547.3603515625
       ],
       "flags": {},
       "order": 4,
@@ -76,98 +76,13 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "AnimateDiff_00368-audio.mp4",
+            "filename": "AnimateDiff_00014-audio.mp4",
             "subfolder": "",
             "type": "output",
-            "format": "video/h264-mp4"
-          }
-        }
-      }
-    },
-    {
-      "id": 46,
-      "type": "VHS_LoadVideo",
-      "pos": [
-        -230.30136108398438,
-        50.956966400146484
-      ],
-      "size": [
-        252.056640625,
-        556.056640625
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            200
-          ]
-        },
-        {
-          "name": "frame_count",
-          "type": "INT",
-          "slot_index": 1,
-          "links": []
-        },
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "slot_index": 2,
-          "links": [
-            100,
-            104
-          ]
-        },
-        {
-          "name": "video_info",
-          "type": "VHS_VIDEOINFO",
-          "links": [
-            201
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VHS_LoadVideo"
-      },
-      "widgets_values": {
-        "video": "video_upscaled_1024_1024.mp4",
-        "force_rate": 0,
-        "custom_width": 0,
-        "custom_height": 0,
-        "frame_load_cap": 24,
-        "skip_first_frames": 0,
-        "select_every_nth": 1,
-        "format": "AnimateDiff",
-        "choose video to upload": "image",
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "frame_load_cap": 24,
-            "skip_first_frames": 0,
-            "force_rate": 0,
-            "filename": "video_upscaled_1024_1024.mp4",
-            "type": "input",
-            "format": "video/mp4",
-            "select_every_nth": 1
+            "format": "video/h264-mp4",
+            "frame_rate": 23,
+            "workflow": "AnimateDiff_00014.png",
+            "fullpath": "/workspace/ComfyUI/output/AnimateDiff_00014-audio.mp4"
           }
         }
       }
@@ -229,60 +144,11 @@
       "widgets_values": {}
     },
     {
-      "id": 47,
-      "type": "Apply Whisper",
-      "pos": [
-        158.38198852539062,
-        225.66799926757812
-      ],
-      "size": [
-        315,
-        98
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "link": 100
-        }
-      ],
-      "outputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "slot_index": 0,
-          "links": null
-        },
-        {
-          "name": "segments_alignment",
-          "type": "whisper_alignment",
-          "links": null
-        },
-        {
-          "name": "words_alignment",
-          "type": "whisper_alignment",
-          "slot_index": 2,
-          "links": [
-            126
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Apply Whisper"
-      },
-      "widgets_values": [
-        "base"
-      ]
-    },
-    {
       "id": 61,
       "type": "Add Subtitles To Frames",
       "pos": [
-        564.8619995117188,
-        53.80543518066406
+        585.7760620117188,
+        144.09840393066406
       ],
       "size": [
         315,
@@ -350,17 +216,147 @@
         true,
         24
       ]
+    },
+    {
+      "id": 46,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        -311.9068298339844,
+        27.273372650146484
+      ],
+      "size": [
+        252.056640625,
+        556.056640625
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            200
+          ]
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "slot_index": 1,
+          "links": []
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "slot_index": 2,
+          "links": [
+            104,
+            205
+          ]
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            201
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "video_upscaled_1024_1024.mp4",
+        "force_rate": 0,
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 24,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "AnimateDiff",
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 24,
+            "skip_first_frames": 0,
+            "force_rate": 0,
+            "filename": "video_upscaled_1024_1024.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "select_every_nth": 1
+          }
+        }
+      }
+    },
+    {
+      "id": 47,
+      "type": "Apply Whisper",
+      "pos": [
+        139.72183227539062,
+        179.96878051757812
+      ],
+      "size": [
+        315,
+        122
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": null
+        },
+        {
+          "name": "segments_alignment",
+          "type": "whisper_alignment",
+          "links": null
+        },
+        {
+          "name": "words_alignment",
+          "type": "whisper_alignment",
+          "slot_index": 2,
+          "links": [
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Apply Whisper"
+      },
+      "widgets_values": [
+        "large",
+        "auto"
+      ]
     }
   ],
   "links": [
-    [
-      100,
-      46,
-      2,
-      47,
-      0,
-      "VHS_AUDIO"
-    ],
     [
       104,
       46,
@@ -416,16 +412,24 @@
       49,
       4,
       "FLOAT"
+    ],
+    [
+      205,
+      46,
+      2,
+      47,
+      0,
+      "AUDIO"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.9090909090909091,
       "offset": [
-        377.182163560896,
-        173.12821709873606
+        395.20810106089607,
+        137.39790459873603
       ]
     },
     "frontendVersion": "1.17.11",
