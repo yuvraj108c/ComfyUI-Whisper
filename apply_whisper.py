@@ -4,6 +4,8 @@ import folder_paths
 import uuid
 import torchaudio
 
+WHISPER_MODEL_SUBDIR = os.path.join("stt", "whisper")
+
 
 class ApplyWhisperNode:
     languages_by_name = None
@@ -13,7 +15,7 @@ class ApplyWhisperNode:
         return {
             "required": {
                 "audio": ("AUDIO",),
-                "model": (["base", "tiny", "small", "medium", "large"],),
+                "model": (['tiny.en', 'tiny', 'base.en', 'base', 'small.en', 'small', 'medium.en', 'medium', 'large-v1', 'large-v2', 'large-v3', 'large', 'large-v3-turbo', 'turbo'],),
             },
             "optional": {
                 "language": (
@@ -38,7 +40,7 @@ class ApplyWhisperNode:
             0), audio["sample_rate"])
 
         # transribe using whisper
-        model = whisper.load_model(model)
+        model = whisper.load_model(model, download_root=os.path.join(folder_paths.models_dir, WHISPER_MODEL_SUBDIR))
         transcribe_args = {}
         if language != "auto":
             if ApplyWhisperNode.languages_by_name is None:
