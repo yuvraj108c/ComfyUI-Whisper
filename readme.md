@@ -48,7 +48,7 @@ Add subtitles like wordcloud on blank frames
 ## Updates
 ### 27 August 2025
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/22 by [@niknah](https://github.com/francislabountyjr) for model patcher, more whisper models support, comfyui model directory support
-- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/8 by [@niknah](https://github.com/qy8502) for Prompt Guidance support
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/18 by [@qy8502](https://github.com/qy8502) for Prompt Guidance support
 - Support YRDZST Semibold Font
 ### 2 May 2025
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/15 by [@niknah](https://github.com/niknah) for language selection
