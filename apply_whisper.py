@@ -91,6 +91,7 @@ class ApplyWhisperNode:
                     ["auto"] +
                     [s.capitalize() for s in sorted(list(whisper.tokenizer.LANGUAGES.values())) ],
                 ),
+                "prompt": ("STRING", {"default":"以下是普通话的句子。"}),
             }
         }
 
@@ -99,7 +100,7 @@ class ApplyWhisperNode:
     FUNCTION = "apply_whisper"
     CATEGORY = "whisper"
 
-    def apply_whisper(self, audio, model, language):
+    def apply_whisper(self, audio, model, language, prompt):
 
         # save audio bytes from VHS to file
         temp_dir = folder_paths.get_temp_directory()
@@ -132,7 +133,8 @@ class ApplyWhisperNode:
             logger.error("Whisper model failed to load. Please check logs for errors.")
             raise RuntimeError(f"Failed to load Whisper model: {model}")
 
-        transcribe_args = {}
+        transcribe_args = {"initial_prompt": prompt}
+
         if language != "auto":
             if ApplyWhisperNode.languages_by_name is None:
                 ApplyWhisperNode.languages_by_name = {v.lower(): k for k, v in whisper.tokenizer.LANGUAGES.items()}
