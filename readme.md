@@ -1,6 +1,7 @@
 # ComfyUI Whisper
 
-Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
+Support multiple languages, prompt guidance and multiple whisper models.
 
 ![demo-image](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/assets/recording.gif?raw=true)
 
