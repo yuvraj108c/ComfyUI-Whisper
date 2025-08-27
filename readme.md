@@ -30,6 +30,7 @@ Install via [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
 ## Usage
 
 Load this [workflow](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/master/example_workflows/whisper_video_subtitles_workflow.json) into ComfyUI
+
 Models are auto-downloaded to `/ComfyUI/models/stt/whisper`
 
 ## Supported Models
