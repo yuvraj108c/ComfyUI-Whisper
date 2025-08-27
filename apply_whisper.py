@@ -91,7 +91,7 @@ class ApplyWhisperNode:
                     ["auto"] +
                     [s.capitalize() for s in sorted(list(whisper.tokenizer.LANGUAGES.values())) ],
                 ),
-                "prompt": ("STRING", {"default":"以下是普通话的句子。"}),
+                "prompt": ("STRING", {"default":""}),
             }
         }
 
