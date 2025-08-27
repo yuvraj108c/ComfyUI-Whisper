@@ -29,6 +29,7 @@ Install via [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
 ## Usage
 
 Load this [workflow](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/master/example_workflows/whisper_video_subtitles_workflow.json) into ComfyUI
+Models are auto-downloaded to `/ComfyUI/models/stt/whisper`
 
 ## Nodes
 
@@ -45,6 +46,10 @@ Add subtitles on the video frames. You can specify font family, font color and x
 Add subtitles like wordcloud on blank frames
 
 ## Updates
+### 27 August 2025
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/22 by [@niknah](https://github.com/francislabountyjr) for model patcher, more whisper models support, comfyui model directory support
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/8 by [@niknah](https://github.com/qy8502) for Prompt Guidance support
+- Support YRDZST Semibold Font
 ### 2 May 2025
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/15 by [@niknah](https://github.com/niknah) for language selection
 
