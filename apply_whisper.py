@@ -24,7 +24,7 @@ class ApplyWhisperNode:
                     ["auto"] +
                     [s.capitalize() for s in sorted(list(whisper.tokenizer.LANGUAGES.values())) ],
                 ),
-                "min_silence_len": ("INT", {"default": 300, "min": 100, "max": 2000, "step": 50}),
+                "min_silence_len": ("INT", {"default": 300, "min": 50, "max": 1000, "step": 50}),
                 "silence_thresh": ("INT", {"default": -40, "min": -60, "max": -20, "step": 5}),
             }
         }
@@ -35,9 +35,9 @@ class ApplyWhisperNode:
     CATEGORY = "whisper"
 
     def remove_punctuation(self, text):
-        """移除所有标点符号并用空格替换"""
-        # 使用正则表达式移除所有标点符号
-        text = re.sub(r'[^\w\s]', ' ', text)
+        """移除所有标点符号，但保留小数点和百分号，并用空格替换其他符号"""
+        # 使用正则表达式移除非保留字符
+        text = re.sub(r'[^\w\s.%]', ' ', text)
         # 将多个连续空格替换为单个空格
         text = re.sub(r'\s+', ' ', text)
         return text.strip()
