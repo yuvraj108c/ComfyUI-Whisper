@@ -3,6 +3,8 @@
 Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
 Support multiple languages, prompt guidance and multiple whisper models.
 
+**Last tested**: 2 January 2026 (ComfyUI v0.7.0@f2fda02 | Torch 2.9.1 | Triton 3.5.1 | Python 3.10.12 | RTX4090 | CUDA 13.0 | Debian 12)
+
 ![demo-image](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/assets/recording.gif?raw=true)
 
 ## ⭐ Support
@@ -51,6 +53,8 @@ Add subtitles on the video frames. You can specify font family, font color and x
 Add subtitles like wordcloud on blank frames
 
 ## Updates
+### 2 January 2026
+- Add `torchcodec` to requirements
 ### 27 August 2025
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/22 by [@francislabountyjr](https://github.com/francislabountyjr) for model patcher, more whisper models support, comfyui model directory support
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/18 by [@qy8502](https://github.com/qy8502) for Prompt Guidance support
