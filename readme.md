@@ -52,8 +52,13 @@ Add subtitles on the video frames. You can specify font family, font color and x
 
 Add subtitles like wordcloud on blank frames
 
+### Save SRT
+
+Export alignments as SRT files in `/ComfyUI/output/srt` directory
+
 ## Updates
 ### 2 January 2026
+- Export alignments as SRT  
 - Add `torchcodec` to requirements
 ### 27 August 2025
 - Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/22 by [@francislabountyjr](https://github.com/francislabountyjr) for model patcher, more whisper models support, comfyui model directory support
