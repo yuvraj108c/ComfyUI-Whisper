@@ -2,6 +2,7 @@ from PIL import ImageDraw, ImageFont, Image
 from .utils import tensor2pil, pil2tensor, tensor2Mask
 import math
 import os
+import textwrap
 
 FONT_DIR = os.path.join(os.path.dirname(__file__),"fonts")
 
@@ -47,6 +48,45 @@ class AddSubtitlesToFramesNode:
     FUNCTION = "add_subtitles_to_frames"
     CATEGORY = "whisper"
 
+    def wrap_text(self, text, font, max_width):
+        """将文本分成多行，确保每行宽度不超过max_width"""
+        # 如果文本宽度已经小于最大宽度，直接返回单行
+        bbox = font.getbbox(text)
+        text_width = bbox[2] - bbox[0]
+        if text_width <= max_width:
+            return [text]
+        
+        # 使用textwrap进行分行
+        wrapper = textwrap.TextWrapper(width=int(len(text) * max_width / text_width))
+        wrapped_lines = wrapper.wrap(text)
+        
+        # 进一步检查每行宽度，确保不超过最大宽度
+        final_lines = []
+        for line in wrapped_lines:
+            line_bbox = font.getbbox(line)
+            line_width = line_bbox[2] - line_bbox[0]
+            
+            if line_width <= max_width:
+                final_lines.append(line)
+            else:
+                # 如果仍然太宽，逐字符分割
+                current_line = ""
+                for char in line:
+                    test_line = current_line + char
+                    test_bbox = font.getbbox(test_line)
+                    test_width = test_bbox[2] - test_bbox[0]
+                    
+                    if test_width <= max_width:
+                        current_line = test_line
+                    else:
+                        if current_line:
+                            final_lines.append(current_line)
+                        current_line = char
+                
+                if current_line:
+                    final_lines.append(current_line)
+        
+        return final_lines
 
     def add_subtitles_to_frames(self, images, alignment, font_family, font_size, font_color, x_position, y_position, center_x, center_y, video_fps):
         pil_images = tensor2pil(images)
@@ -95,31 +135,93 @@ class AddSubtitlesToFramesNode:
 
                 d = ImageDraw.Draw(img)
 
-                # center text
-                text_bbox = d.textbbox((x_position, y_position), alignment_obj["value"], font=font)
-                if center_x:
-                    text_width = text_bbox[2] - text_bbox[0]
-                    x_position = (width - text_width)/2
+                # 计算最大允许宽度（视频宽度减去左右各50像素）
+                max_text_width = width - 100
+                
+                # 分行文本
+                text_lines = self.wrap_text(alignment_obj["value"], font, max_text_width)
+                
+                # 计算文本总高度
+                total_text_height = 0
+                line_heights = []
+                for line in text_lines:
+                    line_bbox = font.getbbox(line)
+                    line_height = line_bbox[3] - line_bbox[1]
+                    line_heights.append(line_height)
+                    total_text_height += line_height
+                
+                # 添加行间距（假设为字体大小的20%）
+                line_spacing = int(font_size * 0.2)
+                total_text_height += line_spacing * (len(text_lines) - 1)
+                
+                # 计算起始Y位置
                 if center_y:
-                    text_height = text_bbox[3] - text_bbox[1]
-                    y_position = (height - text_height)/2
-
-
-                # add text to video frames
-                d.text((x_position, y_position), alignment_obj["value"], fill=font_color,font=font)
+                    current_y = (height - total_text_height) / 2
+                else:
+                    current_y = y_position
+                
+                # 绘制每一行文本
+                text_bboxes = []  # 存储每行文本的边界框
+                for line in text_lines:
+                    line_bbox = font.getbbox(line)
+                    line_width = line_bbox[2] - line_bbox[0]
+                    
+                    # 计算X位置
+                    if center_x:
+                        line_x = (width - line_width) / 2
+                    else:
+                        line_x = x_position
+                    
+                    # 绘制文本到视频帧
+                    d.text((line_x, current_y), line, fill=font_color, font=font)
+                    
+                    # 记录文本位置和大小
+                    text_bbox = (line_x, current_y, line_x + line_width, current_y + line_heights[text_lines.index(line)])
+                    text_bboxes.append(text_bbox)
+                    
+                    # 更新Y位置
+                    current_y += line_heights[text_lines.index(line)] + line_spacing
+                
+                # 计算整个文本区域的最小边界框
+                if text_bboxes:
+                    min_x = min(bbox[0] for bbox in text_bboxes)
+                    min_y = min(bbox[1] for bbox in text_bboxes)
+                    max_x = max(bbox[2] for bbox in text_bboxes)
+                    max_y = max(bbox[3] for bbox in text_bboxes)
+                    overall_bbox = (min_x, min_y, max_x, max_y)
+                else:
+                    overall_bbox = (0, 0, 0, 0)
+                
                 pil_images_with_text.append(img)
 
-                # create mask
+                # 创建mask
                 black_img = Image.new('RGB', (width, height), 'black')
-                d = ImageDraw.Draw(black_img)
-                d.text((x_position, y_position), alignment_obj["value"], fill="white",font=font)    
+                d_mask = ImageDraw.Draw(black_img)
+                
+                # 在mask上绘制文本
+                current_y_mask = current_y = (height - total_text_height) / 2 if center_y else y_position
+                for line in text_lines:
+                    line_bbox = font.getbbox(line)
+                    line_width = line_bbox[2] - line_bbox[0]
+                    
+                    if center_x:
+                        line_x = (width - line_width) / 2
+                    else:
+                        line_x = x_position
+                    
+                    d_mask.text((line_x, current_y_mask), line, fill="white", font=font)
+                    current_y_mask += line_heights[text_lines.index(line)] + line_spacing
+                
                 pil_images_masks.append(black_img)    
 
-                # crop subtitles to black frame
-                text_bbox = d.textbbox((x_position,y_position), alignment_obj["value"], font=font)
-                cropped_text_frame = black_img.crop(text_bbox)
+                # 裁剪字幕区域
+                if text_bboxes:
+                    cropped_text_frame = black_img.crop(overall_bbox)
+                else:
+                    cropped_text_frame = Image.new('RGB', (1, 1), 'black')
+                
                 cropped_pil_images_with_text.append(cropped_text_frame)
-                subtitle_coord.append(text_bbox)
+                subtitle_coord.append(overall_bbox)
 
             
             last_frame_no = end_frame_no
