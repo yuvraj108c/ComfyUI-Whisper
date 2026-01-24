@@ -16,6 +16,14 @@ class AddSubtitlesToFramesNode:
                 "font_color": ("STRING",{
                     "default": "white"
                 }),
+                "font_border_color": ("STRING", {
+                    "default": "black"
+                }),
+                "font_border_width": ("INT", {
+                    "default": 4,
+                    "step": 1,
+                    "display": "number"
+                }),
                 "font_family": (os.listdir(FONT_DIR),),
                 "font_size": ("INT",{
                     "default": 100,
@@ -48,7 +56,7 @@ class AddSubtitlesToFramesNode:
     CATEGORY = "whisper"
 
 
-    def add_subtitles_to_frames(self, images, alignment, font_family, font_size, font_color, x_position, y_position, center_x, center_y, video_fps):
+    def add_subtitles_to_frames(self, images, alignment, font_family, font_size, font_color, x_position, y_position, center_x, center_y, video_fps, font_border_color, font_border_width):
         pil_images = tensor2pil(images)
 
         pil_images_with_text = []
@@ -106,17 +114,43 @@ class AddSubtitlesToFramesNode:
 
 
                 # add text to video frames
-                d.text((x_position, y_position), alignment_obj["value"], fill=font_color,font=font)
+
+                text = alignment_obj["value"]
+
+                # draw border (outline)
+                for dx_position in range(-font_border_width, font_border_width + 1):
+                    for dy_position in range(-font_border_width, font_border_width + 1):
+                        if dx_position != 0 or dy_position != 0:
+                            d.text((x_position + dx_position, y_position + dy_position), text, fill=font_border_color, font=font)
+
+                # draw text
+                d.text((x_position, y_position), text, fill=font_color, font=font)
                 pil_images_with_text.append(img)
 
                 # create mask
                 black_img = Image.new('RGB', (width, height), 'black')
                 d = ImageDraw.Draw(black_img)
-                d.text((x_position, y_position), alignment_obj["value"], fill="white",font=font)    
+
+                # border in mask
+                for dx_position in range(-font_border_width, font_border_width + 1):
+                    for dy_position in range(-font_border_width, font_border_width + 1):
+                        d.text((x_position + dx_position, y_position + dy_position), text, fill="white", font=font)
+
+                # text
+                d.text((x_position, y_position), text, fill="white", font=font)
+
                 pil_images_masks.append(black_img)    
 
                 # crop subtitles to black frame
                 text_bbox = d.textbbox((x_position,y_position), alignment_obj["value"], font=font)
+                
+                # increase bbox for border
+                text_bbox = (
+                    text_bbox[0] - font_border_width,
+                    text_bbox[1] - font_border_width,
+                    text_bbox[2] + font_border_width,
+                    text_bbox[3] + font_border_width,
+)
                 cropped_text_frame = black_img.crop(text_bbox)
                 cropped_pil_images_with_text.append(cropped_text_frame)
                 subtitle_coord.append(text_bbox)
