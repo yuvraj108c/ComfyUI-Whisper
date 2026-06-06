@@ -3,7 +3,7 @@
 Transcribe audio and add subtitles to videos using [Whisper](https://github.com/openai/whisper/) in [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
 Support multiple languages, prompt guidance and multiple whisper models.
 
-**Last tested**: 2 January 2026 (ComfyUI v0.7.0@f2fda02 | Torch 2.9.1 | Triton 3.5.1 | Python 3.10.12 | RTX4090 | CUDA 13.0 | Debian 12)
+**Last tested**: 06 June 2026 (ComfyUI v0.23.0 | Torch 2.12.0 | Triton 3.7.0 | Python 3.12.3 | L40S | CUDA 13.0 | Ubuntu 24.04)
 
 ![demo-image](https://github.com/yuvraj108c/ComfyUI-Whisper/blob/assets/recording.gif?raw=true)
 
@@ -57,6 +57,9 @@ Add subtitles like wordcloud on blank frames
 Export alignments as SRT files in `/ComfyUI/output/srt` directory
 
 ## Updates
+### 6 June 2026
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/39 by [@alastaira](https://github.com/alastaira) for alternative model download folders
+- Merge https://github.com/yuvraj108c/ComfyUI-Whisper/pull/34 by [@MMaximuss](https://github.com/MMaximuss) for subtitle text outline
 ### 2 January 2026
 - Export alignments as SRT  
 - Add `torchcodec` to requirements
