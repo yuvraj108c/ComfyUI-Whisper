@@ -1,8 +1,8 @@
 {
   "id": "13ec9b05-13e3-4ce0-a274-dfe796b6c75d",
   "revision": 0,
-  "last_node_id": 98,
-  "last_link_id": 212,
+  "last_node_id": 101,
+  "last_link_id": 217,
   "nodes": [
     {
       "id": 96,
@@ -25,12 +25,18 @@
           "link": 208
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
       "title": "Preview Text",
       "properties": {
+        "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core",
-        "ver": "0.7.0",
-        "Node name for S&R": "PreviewAny"
+        "ver": "0.7.0"
       },
       "widgets_values": [
         null,
@@ -69,9 +75,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "Save SRT",
         "cnr_id": "ComfyUI-Whisper",
-        "ver": "c67c040559c013833dedb0737df14182dc5043cc",
-        "Node name for S&R": "Save SRT"
+        "ver": "c67c040559c013833dedb0737df14182dc5043cc"
       },
       "widgets_values": [
         "segments"
@@ -98,12 +104,18 @@
           "link": 209
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
       "title": "Preview Text",
       "properties": {
+        "Node name for S&R": "PreviewAny",
         "cnr_id": "comfy-core",
-        "ver": "0.7.0",
-        "Node name for S&R": "PreviewAny"
+        "ver": "0.7.0"
       },
       "widgets_values": [
         null,
@@ -142,13 +154,218 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "Save SRT",
         "cnr_id": "ComfyUI-Whisper",
-        "ver": "c67c040559c013833dedb0737df14182dc5043cc",
-        "Node name for S&R": "Save SRT"
+        "ver": "c67c040559c013833dedb0737df14182dc5043cc"
       },
       "widgets_values": [
         "words"
       ]
+    },
+    {
+      "id": 93,
+      "type": "PreviewAny",
+      "pos": [
+        -293.918388794808,
+        -519.816116619595
+      ],
+      "size": [
+        210,
+        199.76474871812746
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Alignments",
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 98,
+      "type": "PreviewAny",
+      "pos": [
+        -294.2934773362138,
+        -263.61847279346836
+      ],
+      "size": [
+        210,
+        199.76474871812746
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 212
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Alignments",
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 92,
+      "type": "PreviewAny",
+      "pos": [
+        -302.28418262947025,
+        -687.8915274330623
+      ],
+      "size": [
+        228.01116943359375,
+        112
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 206
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Text",
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 49,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        143.79281500131185,
+        -263.3319942053376
+      ],
+      "size": [
+        225.3349609375,
+        713.0399305555555
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 216
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 104
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": 203
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine",
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "1.7.9"
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00003-audio.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24,
+            "workflow": "AnimateDiff_00003.png",
+            "fullpath": "/workspace/ComfyUI/output/AnimateDiff_00003-audio.mp4"
+          }
+        }
+      }
     },
     {
       "id": 46,
@@ -159,7 +376,7 @@
       ],
       "size": [
         260.4306640625,
-        750.7644287109374
+        310
       ],
       "flags": {},
       "order": 0,
@@ -184,7 +401,7 @@
           "type": "IMAGE",
           "slot_index": 0,
           "links": [
-            200
+            213
           ]
         },
         {
@@ -211,12 +428,12 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VHS_LoadVideo",
         "cnr_id": "comfyui-videohelpersuite",
-        "ver": "1.7.9",
-        "Node name for S&R": "VHS_LoadVideo"
+        "ver": "1.7.9"
       },
       "widgets_values": {
-        "video": "sample.mp4",
+        "video": "podcast.mp4",
         "force_rate": 0,
         "custom_width": 0,
         "custom_height": 0,
@@ -231,7 +448,7 @@
             "frame_load_cap": 0,
             "skip_first_frames": 0,
             "force_rate": 0,
-            "filename": "sample.mp4",
+            "filename": "podcast.mp4",
             "type": "input",
             "format": "video/mp4",
             "select_every_nth": 1
@@ -240,11 +457,71 @@
       }
     },
     {
+      "id": 89,
+      "type": "VHS_VideoInfoLoaded",
+      "pos": [
+        -714.3021873220775,
+        48.604001767403396
+      ],
+      "size": [
+        255.0166015625,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 201
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fps🟦",
+          "type": "FLOAT",
+          "links": [
+            203,
+            214
+          ]
+        },
+        {
+          "name": "frame_count🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "duration🟦",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "width🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height🟦",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoInfoLoaded",
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "1.7.9"
+      },
+      "widgets_values": {}
+    },
+    {
       "id": 47,
       "type": "Apply Whisper",
       "pos": [
-        -786.8513645382293,
-        -223.6544277301129
+        -792.5643924540599,
+        -232.8230970404361
       ],
       "size": [
         315,
@@ -282,16 +559,16 @@
           "type": "whisper_alignment",
           "slot_index": 2,
           "links": [
-            126,
             211,
-            212
+            212,
+            215
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "Apply Whisper",
         "cnr_id": "ComfyUI-Whisper",
         "ver": "c67c040559c013833dedb0737df14182dc5043cc",
-        "Node name for S&R": "Apply Whisper",
         "aux_id": "yuvraj108c/ComfyUI-Whisper"
       },
       "widgets_values": [
@@ -301,177 +578,15 @@
       ]
     },
     {
-      "id": 89,
-      "type": "VHS_VideoInfoLoaded",
-      "pos": [
-        -764.099326170508,
-        162.74338824290388
-      ],
-      "size": [
-        255.0166015625,
-        106
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "video_info",
-          "type": "VHS_VIDEOINFO",
-          "link": 201
-        }
-      ],
-      "outputs": [
-        {
-          "name": "fps🟦",
-          "type": "FLOAT",
-          "links": [
-            202,
-            203
-          ]
-        },
-        {
-          "name": "frame_count🟦",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "duration🟦",
-          "type": "FLOAT",
-          "links": null
-        },
-        {
-          "name": "width🟦",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "height🟦",
-          "type": "INT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "1.7.9",
-        "Node name for S&R": "VHS_VideoInfoLoaded"
-      },
-      "widgets_values": {}
-    },
-    {
-      "id": 93,
-      "type": "PreviewAny",
-      "pos": [
-        -293.918388794808,
-        -519.816116619595
-      ],
-      "size": [
-        210,
-        199.76474871812746
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "source",
-          "type": "*",
-          "link": 207
-        }
-      ],
-      "outputs": [],
-      "title": "Preview Alignments",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.7.0",
-        "Node name for S&R": "PreviewAny"
-      },
-      "widgets_values": [
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 98,
-      "type": "PreviewAny",
-      "pos": [
-        -294.2934773362138,
-        -263.61847279346836
-      ],
-      "size": [
-        210,
-        199.76474871812746
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "source",
-          "type": "*",
-          "link": 212
-        }
-      ],
-      "outputs": [],
-      "title": "Preview Alignments",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.7.0",
-        "Node name for S&R": "PreviewAny"
-      },
-      "widgets_values": [
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 92,
-      "type": "PreviewAny",
-      "pos": [
-        -302.28418262947025,
-        -687.8915274330623
-      ],
-      "size": [
-        228.01116943359375,
-        112
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "source",
-          "type": "*",
-          "link": 206
-        }
-      ],
-      "outputs": [],
-      "title": "Preview Text",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.7.0",
-        "Node name for S&R": "PreviewAny"
-      },
-      "widgets_values": [
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 61,
+      "id": 100,
       "type": "Add Subtitles To Frames",
       "pos": [
-        -338.79950402064753,
-        96.42499161147244
+        -601.0079237332232,
+        246.61926949775355
       ],
       "size": [
-        315,
-        286
+        335.37567615744103,
+        334
       ],
       "flags": {},
       "order": 8,
@@ -480,12 +595,12 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 200
+          "link": 213
         },
         {
           "name": "alignment",
           "type": "whisper_alignment",
-          "link": 126
+          "link": 215
         },
         {
           "name": "video_fps",
@@ -493,28 +608,26 @@
           "widget": {
             "name": "video_fps"
           },
-          "link": 202
+          "link": 214
         }
       ],
       "outputs": [
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "slot_index": 0,
           "links": [
-            128
+            216
           ]
         },
         {
           "name": "MASK",
           "type": "MASK",
-          "slot_index": 1,
-          "links": []
+          "links": null
         },
         {
           "name": "cropped_subtitles",
           "type": "IMAGE",
-          "links": null
+          "links": []
         },
         {
           "name": "subtitle_coord",
@@ -523,106 +636,20 @@
         }
       ],
       "properties": {
-        "cnr_id": "ComfyUI-Whisper",
-        "ver": "c67c040559c013833dedb0737df14182dc5043cc",
-        "Node name for S&R": "Add Subtitles To Frames",
-        "aux_id": "yuvraj108c/ComfyUI-Whisper"
+        "Node name for S&R": "Add Subtitles To Frames"
       },
       "widgets_values": [
         "red",
+        "black",
+        0,
         "YRDZST Semibold.ttf",
         200,
-        100,
-        600,
-        24,
+        0,
+        0,
+        true,
         true,
         24
       ]
-    },
-    {
-      "id": 49,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        143.79281500131185,
-        -263.3319942053376
-      ],
-      "size": [
-        225.3349609375,
-        713.0399305555555
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 128
-        },
-        {
-          "name": "audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": 104
-        },
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        },
-        {
-          "name": "frame_rate",
-          "type": "FLOAT",
-          "widget": {
-            "name": "frame_rate"
-          },
-          "link": 203
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "1.7.9",
-        "Node name for S&R": "VHS_VideoCombine"
-      },
-      "widgets_values": {
-        "frame_rate": 24,
-        "loop_count": 0,
-        "filename_prefix": "AnimateDiff",
-        "format": "video/h264-mp4",
-        "pix_fmt": "yuv420p",
-        "crf": 19,
-        "save_metadata": true,
-        "trim_to_audio": false,
-        "pingpong": false,
-        "save_output": true,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "AnimateDiff_00002-audio.mp4",
-            "subfolder": "",
-            "type": "output",
-            "format": "video/h264-mp4",
-            "frame_rate": 24,
-            "workflow": "AnimateDiff_00002.png",
-            "fullpath": "/workspace/ComfyUI/output/AnimateDiff_00002-audio.mp4"
-          }
-        }
-      }
     }
   ],
   "links": [
@@ -635,44 +662,12 @@
       "VHS_AUDIO"
     ],
     [
-      126,
-      47,
-      2,
-      61,
-      1,
-      "whisper_alignment"
-    ],
-    [
-      128,
-      61,
-      0,
-      49,
-      0,
-      "IMAGE"
-    ],
-    [
-      200,
-      46,
-      0,
-      61,
-      0,
-      "IMAGE"
-    ],
-    [
       201,
       46,
       3,
       89,
       0,
       "VHS_VIDEOINFO"
-    ],
-    [
-      202,
-      89,
-      0,
-      61,
-      2,
-      "FLOAT"
     ],
     [
       203,
@@ -745,6 +740,38 @@
       98,
       0,
       "whisper_alignment"
+    ],
+    [
+      213,
+      46,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      214,
+      89,
+      0,
+      100,
+      2,
+      "FLOAT"
+    ],
+    [
+      215,
+      47,
+      2,
+      100,
+      1,
+      "whisper_alignment"
+    ],
+    [
+      216,
+      100,
+      0,
+      49,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -758,20 +785,19 @@
         416.28487309316733
       ],
       "color": "#3f789e",
-      "font_size": 24,
       "flags": {}
     }
   ],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5450529555861997,
+      "scale": 0.653949235932933,
       "offset": [
-        1741.826278147595,
-        911.0259214691794
+        1800.2916928822303,
+        562.7670625211073
       ]
     },
-    "frontendVersion": "1.35.9",
+    "frontendVersion": "1.44.19",
     "workflowRendererVersion": "LG",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
