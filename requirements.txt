@@ -1,4 +1,4 @@
 openai-whisper
 pillow
 uuid
-torchcodec
+soundfile

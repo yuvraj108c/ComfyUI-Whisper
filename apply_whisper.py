@@ -2,9 +2,9 @@ import whisper
 import os
 import folder_paths
 import uuid
-import torchaudio
 import torch
 import logging
+import soundfile
 
 import comfy.model_management as mm
 import comfy.model_patcher
@@ -106,8 +106,16 @@ class ApplyWhisperNode:
         temp_dir = folder_paths.get_temp_directory()
         os.makedirs(temp_dir, exist_ok=True)
         audio_save_path = os.path.join(temp_dir, f"{uuid.uuid1()}.wav")
-        torchaudio.save(audio_save_path, audio['waveform'].squeeze(
-            0), audio["sample_rate"])
+        waveform = audio['waveform'].squeeze(0).cpu().numpy()
+
+        if waveform.ndim == 2:
+            waveform = waveform.T
+
+        soundfile.write(
+            audio_save_path,
+            waveform,
+            int(audio["sample_rate"])
+        )
 
         cache_key = model
         if cache_key not in WHISPER_PATCHER_CACHE:
