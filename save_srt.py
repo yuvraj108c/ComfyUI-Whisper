@@ -8,9 +8,12 @@ class SaveSRTNode:
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": { 
-                "alignment" : ("whisper_alignment",),
-                "name": ("STRING",{"default": "subtitles"}),
+            "required": {
+                "alignment": ("whisper_alignment",),
+                "name": ("STRING", {"default": "subtitles"}),
+            },
+            "optional": {
+                "subfolder": ("STRING", {"default": "srt"}),
             }
         }
 
@@ -50,13 +53,11 @@ class SaveSRTNode:
 
         return srt_content
 
-    def save_srt(self, alignment, name):
+    def save_srt(self, alignment, name, subfolder="srt"):
+        save_dir = os.path.join(folder_paths.get_output_directory(), subfolder)
+        os.makedirs(save_dir, exist_ok=True)
 
-        subfolder = "srt"
-        output_dir = os.path.join(folder_paths.get_output_directory(), subfolder)
-        os.makedirs(output_dir,exist_ok=True)
-
-        srt_save_path = os.path.join(output_dir, name) + ".srt"
+        srt_save_path = os.path.join(save_dir, name) + ".srt"
         srt_content = self.json_to_srt(alignment)
 
         with open(srt_save_path, 'w', encoding='utf-8') as f:
